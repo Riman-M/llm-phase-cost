@@ -1,0 +1,17 @@
+# Trace handling and analysis
+pandas>=2.0
+numpy>=1.24
+matplotlib>=3.7
+
+# PyTorch phase profiling (CPU build)
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+torch>=2.1
+transformers>=4.40
+accelerate>=0.30
+
+# llama.cpp phase profiling
+llama-cpp-python>=0.3.0
+huggingface_hub>=0.23
+
+# Optional: physical-core detection falls back to /proc/cpuinfo without it
+psutil>=5.9

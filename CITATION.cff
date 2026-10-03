@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software or the measurements in it, please cite the paper."
+title: "Phase cost structure of LLM inference and the workload dependence of quantisation"
+abstract: >-
+  Measurement scripts and raw results separating prefill and decode cost in
+  large language model inference across runtimes and weight precisions, and
+  applying the resulting cost model to four Azure production inference traces.
+authors:
+  - family-names: Mandal
+    given-names: Riman
+    orcid: "https://orcid.org/0000-0001-7409-8491"
+    affiliation: "School of Computer Science and Engineering, Galgotias University"
+license: MIT
+repository-code: "https://github.com/<user>/llm-phase-cost"
+keywords:
+  - large language models
+  - inference
+  - quantisation
+  - workload characterisation
+  - performance measurement
+preferred-citation:
+  type: article
+  title: >-
+    Diminishing Returns: Why Prefill-Dominated Workloads Erode the Benefit of
+    Low-Precision LLM Inference
+  authors:
+    - family-names: Mandal
+      given-names: Riman
+      orcid: "https://orcid.org/0000-0001-7409-8491"
+  year: 2026
+  status: submitted

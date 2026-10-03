@@ -1,0 +1,10 @@
+{
+  "cpu_model": "Intel(R) Xeon(R) CPU @ 2.20GHz",
+  "physical_cores": 2,
+  "logical_cpus": 4,
+  "available_ram_gb": 32.3,
+  "platform": "Linux-6.12.90+-x86_64-with-glibc2.35",
+  "python": "3.12.13",
+  "torch": "2.10.0+cpu",
+  "started": "2026-09-30T03:53:34"
+}

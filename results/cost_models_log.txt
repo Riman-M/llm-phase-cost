@@ -1,0 +1,91 @@
+ 
+================================================== 
+ Cost model sweep  02-Oct-26 14:18:47.68 
+================================================== 
+ 
+===== fp32  (Qwen/Qwen2.5-1.5B) ===== 
+model Qwen/Qwen2.5-1.5B, 4 threads, profiled context 128-8192
+  prefill_ms(c) = 28.5998*c + 6.577e-04*c^2      R2 = 0.9999
+  decode_ms(c)  = 318.140 + 2.377e-02*c          R2 = 0.9969
+  fixed decode overhead is 318.1 ms/token, 93% of the cost at ctx=1024
+  [2023_code] 8,819 requests, 0.00% clipped at ctx=8192
+  [2023_conv] 19,366 requests, 0.01% clipped at ctx=8192
+  [2024_code] 16,803,695 requests, 0.00% clipped at ctx=8192
+  [2024_conv] 27,303,999 requests, 0.00% clipped at ctx=8192
+
+==============================================================================
+PER-REQUEST COST (over the real request distribution)
+trace        tok ratio  service s  prefill %  req/s/node  ms/token
+2023_code         73.4      74.12      86.2%      0.0135     35.71
+2023_conv          5.5     107.18      32.4%      0.0093     78.47
+2024_code        110.7      87.54      90.2%      0.0114     34.55
+2024_conv         15.5      89.86      55.6%      0.0111     51.73
+
+==============================================================================
+PROVISIONING ERROR of a token-proportional planner
+calibrated on 2023_conv, applied elsewhere
+trace         predicted s   actual s     error   verdict
+2023_code          162.88      74.12      2.20x   over-provisions by 2.20x
+2023_conv          107.18     107.18      1.00x   close enough
+2024_code          198.84      87.54      2.27x   over-provisions by 2.27x
+2024_conv          136.31      89.86      1.52x   over-provisions by 1.52x
+
+wrote results_fp32/cost_model.csv
+ 
+===== f16  (Qwen2.5-1.5B-f16) ===== 
+model Qwen2.5-1.5B-f16, 4 threads, profiled context 128-8192
+  prefill_ms(c) = 45.1974*c + 1.857e-03*c^2      R2 = 1.0000
+  decode_ms(c)  = 158.718 + 8.064e-03*c          R2 = 0.9826
+  fixed decode overhead is 158.7 ms/token, 95% of the cost at ctx=1024
+  [2023_code] 8,819 requests, 0.00% clipped at ctx=8192
+  [2023_conv] 19,366 requests, 0.01% clipped at ctx=8192
+  [2024_code] 16,803,695 requests, 0.00% clipped at ctx=8192
+  [2024_conv] 27,303,999 requests, 0.00% clipped at ctx=8192
+
+==============================================================================
+PER-REQUEST COST (over the real request distribution)
+trace        tok ratio  service s  prefill %  req/s/node  ms/token
+2023_code         73.4     112.47      95.7%      0.0089     54.18
+2023_conv          5.5      92.23      61.7%      0.0108     67.53
+2024_code        110.7     137.73      97.1%      0.0073     54.35
+2024_conv         15.5     101.93      81.5%      0.0098     58.68
+
+==============================================================================
+PROVISIONING ERROR of a token-proportional planner
+calibrated on 2023_conv, applied elsewhere
+trace         predicted s   actual s     error   verdict
+2023_code          140.18     112.47      1.25x   over-provisions by 1.25x
+2023_conv           92.23      92.23      1.00x   close enough
+2024_code          171.12     137.73      1.24x   over-provisions by 1.24x
+2024_conv          117.31     101.93      1.15x   over-provisions by 1.15x
+
+wrote results_f16/cost_model.csv
+ 
+===== q4  (Qwen2.5-1.5B-q4_k_m) ===== 
+model Qwen2.5-1.5B-q4_k_m, 4 threads, profiled context 128-8192
+  prefill_ms(c) = 25.1956*c + 1.966e-03*c^2      R2 = 1.0000
+  decode_ms(c)  = 68.563 + 8.177e-03*c          R2 = 0.9974
+  fixed decode overhead is 68.6 ms/token, 89% of the cost at ctx=1024
+  [2023_code] 8,819 requests, 0.00% clipped at ctx=8192
+  [2023_conv] 19,366 requests, 0.01% clipped at ctx=8192
+  [2024_code] 16,803,695 requests, 0.00% clipped at ctx=8192
+  [2024_conv] 27,303,999 requests, 0.00% clipped at ctx=8192
+
+==============================================================================
+PER-REQUEST COST (over the real request distribution)
+trace        tok ratio  service s  prefill %  req/s/node  ms/token
+2023_code         73.4      69.88      96.6%      0.0143     33.66
+2023_conv          5.5      50.41      67.7%      0.0198     36.91
+2024_code        110.7      86.64      97.7%      0.0115     34.19
+2024_conv         15.5      60.36      84.4%      0.0166     34.75
+
+==============================================================================
+PROVISIONING ERROR of a token-proportional planner
+calibrated on 2023_conv, applied elsewhere
+trace         predicted s   actual s     error   verdict
+2023_code           76.62      69.88      1.10x   over-provisions by 1.10x
+2023_conv           50.41      50.41      1.00x   close enough
+2024_code           93.53      86.64      1.08x   over-provisions by 1.08x
+2024_conv           64.12      60.36      1.06x   over-provisions by 1.06x
+
+wrote results_q4/cost_model.csv

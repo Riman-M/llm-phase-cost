@@ -1,0 +1,10 @@
+data/
+*.gguf
+*.safetensors
+__pycache__/
+*.pyc
+results_fp32/
+results_f16/
+results_q4/
+.DS_Store
+paper/
