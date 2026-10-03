@@ -11,7 +11,7 @@ authors:
     orcid: "https://orcid.org/0000-0001-7409-8491"
     affiliation: "School of Computer Science and Engineering, Galgotias University"
 license: MIT
-repository-code: "https://github.com/<user>/llm-phase-cost"
+repository-code: "https://github.com/RimanM/llm-phase-cost"
 keywords:
   - large language models
   - inference
